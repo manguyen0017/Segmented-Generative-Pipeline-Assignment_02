@@ -18,13 +18,13 @@
 <div align="center">
   </a>
 
-  <h3 align="center">Segmented Generative Pipeline</h3>
+  <h3 align="center">Segmented Generation & Trait-Based Systems</h3>
 
   <p align="center">
     This project explores the iterative frustrations of AI-generated content through a satirical Yonkoma comic, highlighting AI’s frequent hallucinations and the psychological rollercoaster that comes with addressing them. The comic uses humor to showcase the disconnect between pre-trained unbiased logic, AI-generated "failures" and human expectations.
-    <br />
+<!--     <br />
     <a href="https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/pdf/Yonkoma__The_Headaches_of_Iterative_AI_Generation.pdf"><strong>Link to PDF Report»</strong></a>
-    <br />
+    <br /> -->
     <br />
     <a href="https://manguyen.myportfolio.com/">Michael Nguyen</a>
     &middot;
