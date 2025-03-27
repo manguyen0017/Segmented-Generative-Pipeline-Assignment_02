@@ -21,7 +21,7 @@
   <h3 align="center">Segmented Generation & Trait-Based Systems</h3>
 
   <p align="center">
-    This project explores the iterative frustrations of AI-generated content through a satirical Yonkoma comic, highlighting AI’s frequent hallucinations and the psychological rollercoaster that comes with addressing them. The comic uses humor to showcase the disconnect between pre-trained unbiased logic, AI-generated "failures" and human expectations.
+    This project visualizes identity by transforming a user's MBTI, moral alignment, and favorite color into layered Voronoi diagrams. Through recursive subdivision and trait-driven visual rules, the system encodes psychological attributes into a unique generative portrait.
 <!--     <br />
     <a href="https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/pdf/Yonkoma__The_Headaches_of_Iterative_AI_Generation.pdf"><strong>Link to PDF Report»</strong></a>
     <br /> -->
@@ -32,108 +32,109 @@
   </p>
 </div>
 
-[![4-comma][images-fig1]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig1.png)
+[![Voronoi][images-fig1]]()
 
-Figure 1. My Yonkoma satirizes the iterative loop of generative AI. The artist eagerly explains fixing an AI-generated hand, spiraling into an overwhelming monologue. While the hand is corrected, the final panel humorously exposes a new issue with the artist's legs, emphasizing AI’s endless cycle of iterative exploration.
+Figure 1. Full output visual of one complete generative portrait progressing from favorite color to deepest sublayer.
 
 <!-- Abstract -->
 ## Abstract
-A satirical showcase of generative AI’s tendency to misinterpret human intent, often overcorrecting or hallucinating unexpected results. It explores the gap between AI’s structured, pre-trained logic and subjective human expectations, highlighting issues like bias, prompt "failure," and human psychological responses to iterative AI-driven tools.
-
-### Inspiration
-[![4-comma][images-fig2]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig2.png) <!-- Big Nate Comic -->
-
-Figure 2. My Yonkoma draws inspiration from this segment within Big Nate [4], an American comic strip, which subtly breaks the 4th wall.
-
+This generative art project visualizes identity using layered Voronoi diagrams that interpret a user’s MBTI, moral alignment, and favorite color into nested geometric compositions. Each trait modifies how cells are spatially positioned, how their colors evolve across depths, and how moral values shift over generational inheritance. Inspired by psychological visualizations and procedural aesthetics, the system offers a customizable personality portrait.
 
 <!-- Introduction and Related Works -->
 ## Introduction and Related Works
 
-Generative AI tools have become widely used for art, text generation, and creative workflows, yet they often struggle with misinterpretation, overcorrection, and unintended distortions. This issue is particularly evident in AI image generation, where users must refine prompts iteratively to achieve desired results—often encountering unexpected biases, distortions, or hallucinations in the process.
+Generative systems that integrate psychological models have seen increasing interest for personalized design, often borrowing from personality theory and procedural visualization. Recent work has investigated how identity can shape creative output through data-informed inputs.
 
-A major issue is AI hallucinations, where models generate inaccurate or exaggerated details. Research on AI-generated hands shows that models often produce extra fingers, unnatural anatomy, and distorted proportions, highlighting how AI struggles with complex structures and proportional accuracy [1].
+Guckelsberger et al. (2017) introduced explainable AI systems for creative co-design, allowing deeper interpretation of procedural generative tools [1]. Similarly, Abdul et al. (2018) reviewed explainability in AI systems as a means of increasing user trust and understanding [2]. These ideas inform how layered personality traits can be visualized.
 
-Beyond technical issues, user psychology influences how AI failures are perceived. Studies on automation bias and algorithmic aversion reveal that users tend to over-rely on AI or lose trust after mistakes, depending on how much control they feel over AI corrections [2]. This psychological factor is crucial in understanding why users continuously refine prompts despite repeated failures.
+Most recently, research by [Electronics Journal] (2024) highlights how MBTI and Big Five personality traits can influence generative AI systems for more meaningful and emotionally resonant outputs [4]. This supports the decision to blend personality psychology with algorithmic visual structures.
 
-The prompt refinement struggle is further explored in studies on user interaction with text-to-image models, which highlight common frustrations and the need for more intuitive AI interfaces [3]. These works underscore the disconnect between AI logic and human expectations, a theme central to this project’s satirical exploration.
+Previous systems by Holtzman (2016) explored aesthetic computation via user-controlled input mappings [3], echoing our aim to transform preference into generative form. This system extends such mappings into a trait-driven Voronoi space.
 
 
 ### Built With
 * ChatGPT
-* Anitoon.app's "AI Comic Generator" and "Create Comic on Canvas" pages
-* Adobe Photoshop
+* P5.js
 
 ## Methodology
 
-### Creative Workflow
+The generator was implemented in p5.js with d3.voronoi for diagram creation. A user inputs their favorite color (HSV), MBTI code, and moral alignment (e.g., Lawful Good), which are used to construct three nested layers:
 
-The comic was created using Anitoon.app's AI Comic Generator, an AI-powered tool designed to streamline comic creation. The process involved several stages of iteration and refinement to achieve the desired visual style and narrative clarity.
+### Layer Structure & Pipeline
 
-* Step 1: After developing a prompt using ChatGPT, use the Anitoon.app's "Comic-Generator" page to generate multiple 2x2 panel iterations, experimenting with different styles.
-* Step 2: Once satisfied with the general style, transferred the comic to the "Create Comic on Canvas" page, allowing for individual panel modifications through isolated AI generations. The use of layered shapes and text help mitigate artifacts and allowed for greater flexibility in iterative refinements.
-* Step 3: Exported the final AI-generated panels to Photoshop, where manual edits were made to ensure stylistic cohesion, correct inconsistencies, and refine details that AI misinterpreted.
+* Base Layer: 4 Voronoi cells based on MBTI letters. Each letter affects seed placement and applies hue shifts (e.g., I/E = ±20° hue).
+* Sublayer 2: Each base cell is subdivided into 3 smaller Voronoi cells, inheriting and mutating alignment traits (e.g., Good = +1, Evil = -1).
+* Sublayer 3: Each sublayer 2 cell recursively spawns 2 more cells. Trait inheritance occurs probabilistically, preserving moral continuity.
 
-[![4-comma][images-fig3]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig3.png)
+[![Voronoi][images-fig2]]()
 
-Figure 3. A structured breakdown Yonkoma prompt generation VIA ChatGPT to be used in Anitoon.app: defining comic style, key panel contextal content, and refining the humor-driven AI satire through brainstorming.
+Figure 2. A visual overview of how HSV color, MBTI code, and moral alignment collectively influence color, pattern structure, and visual behavior of the generative system.
 
-[![4-comma][images-fig4]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig4.png)
+[![Voronoi][images-fig3]]()
 
-Figure 4. The comic’s evolution through AI iterations, ensuring style consistency while preserving satire. Speech bubbles and text are generated on separate layers, enhancing modularity for better user control and accessibility.
+Figure 3. Pipeline stages from selected HSV input to final nested Voronoi output, showing how personality and color traits evolve across layers.
 
-[![4-comma][images-fig5]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig5.png)
+[![Voronoi][images-fig4]]()
 
-Figure 5. Breakdown of iterative AI generations per panel, refining coherence and accuracy. Panel 1’s high iteration count illustrates the loop trap of subjective regeneration. Reevaluation of expectations and user-control result in quicker iterations of later panels.
+Figure 4. MBTI pairings and their additive influence on hue; INFP (cooler) and ESTJ (warmer) demonstrate contrasting shifts.
 
-[![4-comma][images-fig6]](https://github.com/manguyen0017/4-comma-Assignment_01/blob/main/images/fig6.png)
+[![Voronoi][images-fig5]]()
 
-Figure 6. Post-processing workflow in Photoshop, including dialogue integration, final corrections, and manual refinements to enhance clarity and humor.
+Figure 5. Lawful, Neutral, and Chaotic alignment styles shown across all layers. Lawful maintains order, Neutral blends evenly, and Chaotic introduces irregular variance.
 
+[![Voronoi][images-fig6]]()
 
-### Challenges & Iterative Process
+Figure 6. Good, Neutral, and Evil alignment influences on color vibrancy. Good brightens, Evil darkens, and Neutral balances saturation.
 
-* Maintaining style consistency across panels.
-* Ensuring intended character expressions and proportions.
-* Intentionally producing generated hand hallucinations and distortions.
+[![Voronoi][images-fig7]]()
 
+Figure 7. Trait inheritance table showing the probability of child cells adopting Good, Neutral, or Evil values from parents. Visualized numerically in layer output (+1, 0, -1, etc).
 
-### Tools & Techniques Used
+### Color Logic
 
-* AI-models: Chat-GPT; Anitoon.app AI Comic Generator (model specifics undisclosed).
-* Post-processing software: Adobe Photoshop for manual refinements.
-* Prompting strategies: Iterative AI generations, isolated panel adjustments, and selective negative prompts to refine details.
+Color is represented in HSB mode:
+* Hue: Determined by favorite color, gradually offset by MBTI and layer depth.
+* Saturation/Brightness: Adjusted by alignment (e.g., Good brightens cells; Evil darkens).
 
+To preserve generative consistency, all randomness is locked to a user-defined seed. Layers can be toggled, outlined, or labeled with MBTI and trait scores.
 
+### Technical Highlights
+
+* Trait inheritance probabilities: Good/Evil pass down with 70% chance, 20% stay Neutral, 10% flip.
+* Chaotic alignments introduce positional noise and irregular clustering.
+* Hue adjustments intensify with depth but are clamped for visual consistency.
+
+### Tools & Implementation
+
+* Frameworks: p5.js, d3.voronoi
+* Features: Object-oriented class system for each Voronoi layer
+* Interactivity: UI toggles to show/hide traits, layers, and highlight modes
+* Seed Control: Deterministic seeding for repeatable outputs
 
 ## Result and Future Work
-The final Yonkoma successfully illustrates the frustrations of AI-driven art generation, emphasizing the gap between user intent and AI execution. Each panel showcases common AI pitfalls:
-* Misinterpretation – AI generates incorrect anatomy.
-* Overcorrection – The user refines prompts, but AI takes adjustments too literally.
-* Temporary Success – The correction seems to work.
-* Unintended Failure – Fixing one issue causes another absurd problem.
+This system generates portraits that uniquely encode the "identity" of a user through color, structure, and progression. Good and Evil traits shape light and dark tones, while MBTI and chaos/lawful logic determine spatial design. Layers evolve visually and symbolically.
 
 ### Future Work
-* Expanding beyond Yonkoma to explore longer-form AI generated comics and stories.
-* Experimenting with different AI models and tools.
-* Further exploring modular revision techniques for UI integration.
-* Investigating user perception of AI-generated failures through surveys or user testing.
-
+* Implement simulation with rules truer to "Game of Life" rules.
+* Enable live animation of sublayer growth & decay.
+* Improve shape generation quality via Bézier-based cell curvature.
+* Unintended Failure – Fixing one issue causes another absurd problem.
 
 
 ## Conclusion
-This project highlights the struggle of iterating and refining AI-generated content, using humor to emphasize the disconnect between user intent, expectation, and AI execution. As AI tools continue to evolve, understanding its limitations, biases, and unpredictability remains crucial—especially in creative fields where human expectations don’t always align with machine logic.
+Through procedural layering, trait inheritance, and color transformation, this project encodes identity into generative visuals. It not only explores the aesthetic effects of personality and alignment, but proposes a compelling approach to personal data portraiture—where generative systems become reflective mirrors of user input rather than arbitrary aesthetics.
 
 
 
 <!-- Bibliography -->
 ## Bibliography 
-[1] Zhang, Yiqun, et al. "Detecting and restoring non-standard hands in stable diffusion generated images." arXiv preprint arXiv:2312.04236 (2023).
+[1] Guckelsberger, C., Salge, C., & Colton, S. (2017). Addressing the “Why?” in Computational Creativity: A Non-Anthropocentric, Minimal Model of Intentional Creative Agency. Proceedings of the Eighth International Conference on Computational Creativity.
 
-[2] Jones-Jang, S. Mo, and Yong Jin Park. "How do people react to AI failure? Automation bias, algorithmic aversion, and perceived controllability." Journal of Computer-Mediated Communication 28.1 (2023): zmac029.
+[2] Abdul, A., Vermeulen, J., Wang, D., Lim, B. Y., & Kankanhalli, M. (2018). Trends and Trajectories for Explainable, Accountable and Intelligible Systems: An HCI Research Agenda. Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems.
 
-[3] Mahdavi Goloujeh, Atefeh, Anne Sullivan, and Brian Magerko. "Is It AI or Is It Me? Understanding Users’ Prompt Journey with Text-to-Image Generative AI Tools." Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems. 2024.
+[3] Holtzman, H. (2016). The Art of Interaction: What HCI Can Learn from Interactive Art. Interactions, 23(2), 44–49.
 
-[4] Peirce, Lincoln. “Big Nate by Lincoln Peirce for August 29, 2004.” GoComics, 29 Aug. 2004, www.gocomics.com/bignate/2004/08/29.
+[4] Electronics. (2024). Integrating Generative AI with Personality Models. Electronics, 13(23), 4751. https://www.mdpi.com/2079-9292/13/23/4751
 
 <!-- CONTACT -->
 ## Contact
@@ -173,6 +174,7 @@ VIZA 626 Class Website: [https://sites.google.com/view/viza626/](https://sites.g
 [images-fig4]: images/fig4.png
 [images-fig5]: images/fig5.png
 [images-fig6]: images/fig6.png
+[images-fig7]: images/fig7.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
