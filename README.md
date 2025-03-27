@@ -32,7 +32,7 @@
   </p>
 </div>
 
-[![Voronoi][images-fig1]]()
+[![Voronoi][images-fig1]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig1.png)
 
 Figure 1. Full output visual of one complete generative portrait progressing from favorite color to deepest sublayer.
 
@@ -66,27 +66,27 @@ The generator was implemented in p5.js with d3.voronoi for diagram creation. A u
 * Sublayer 2: Each base cell is subdivided into 3 smaller Voronoi cells, inheriting and mutating alignment traits (e.g., Good = +1, Evil = -1).
 * Sublayer 3: Each sublayer 2 cell recursively spawns 2 more cells. Trait inheritance occurs probabilistically, preserving moral continuity.
 
-[![Voronoi][images-fig2]]()
+[![Voronoi][images-fig2]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig2.png)
 
 Figure 2. A visual overview of how HSV color, MBTI code, and moral alignment collectively influence color, pattern structure, and visual behavior of the generative system.
 
-[![Voronoi][images-fig3]]()
+[![Voronoi][images-fig3]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig3.png)
 
 Figure 3. Pipeline stages from selected HSV input to final nested Voronoi output, showing how personality and color traits evolve across layers.
 
-[![Voronoi][images-fig4]]()
+[![Voronoi][images-fig4]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig4.png)
 
 Figure 4. MBTI pairings and their additive influence on hue; INFP (cooler) and ESTJ (warmer) demonstrate contrasting shifts.
 
-[![Voronoi][images-fig5]]()
+[![Voronoi][images-fig5]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig5.png)
 
 Figure 5. Lawful, Neutral, and Chaotic alignment styles shown across all layers. Lawful maintains order, Neutral blends evenly, and Chaotic introduces irregular variance.
 
-[![Voronoi][images-fig6]]()
+[![Voronoi][images-fig6]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig6.png)
 
 Figure 6. Good, Neutral, and Evil alignment influences on color vibrancy. Good brightens, Evil darkens, and Neutral balances saturation.
 
-[![Voronoi][images-fig7]]()
+[![Voronoi][images-fig7]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig7.png)
 
 Figure 7. Trait inheritance table showing the probability of child cells adopting Good, Neutral, or Evil values from parents. Visualized numerically in layer output (+1, 0, -1, etc).
 
