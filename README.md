@@ -58,13 +58,13 @@ Previous systems by Holtzman (2016) explored aesthetic computation via user-cont
 
 ## Methodology
 
-The generator was implemented in p5.js with d3.voronoi for diagram creation. A user inputs their favorite color (HSV), MBTI code, and moral alignment (e.g., Lawful Good), which are used to construct three nested layers:
+The generator was implemented in p5.js with d3.voronoi to create layered Voronoi diagrams. Users input their favorite color (HSV), MBTI code, and moral alignment (e.g., Chaotic Good). These values drive the construction of three nested diagram layers, each shaped by identity traits.
 
 ### Layer Structure & Pipeline
 
-* Base Layer: 4 Voronoi cells based on MBTI letters. Each letter affects seed placement and applies hue shifts (e.g., I/E = ±20° hue).
-* Sublayer 2: Each base cell is subdivided into 3 smaller Voronoi cells, inheriting and mutating alignment traits (e.g., Good = +1, Evil = -1).
-* Sublayer 3: Each sublayer 2 cell recursively spawns 2 more cells. Trait inheritance occurs probabilistically, preserving moral continuity.
+* Base Layer: 4 Voronoi cells based on MBTI letters. Each letter influences cell position and shifts hue (e.g., I/E = ±20°).
+* Sublayer 2: Each base cell spawns 3 smaller cells. Traits (e.g., Good = +1, Evil = -1) mutate per cell with probabilistic inheritance.
+* Sublayer 3: Each sublayer 2 cell creates 2 more cells. Traits inherit again with a 70% chance to persist, 20% to neutralize, and 10% to flip.
 
 [![Voronoi][images-fig2]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig2.png)
 
@@ -93,10 +93,10 @@ Figure 7. Trait inheritance table showing the probability of child cells adoptin
 ### Color Logic
 
 Color is represented in HSB mode:
-* Hue: Determined by favorite color, gradually offset by MBTI and layer depth.
-* Saturation/Brightness: Adjusted by alignment (e.g., Good brightens cells; Evil darkens).
+* Hue starts from favorite color and gradually shifts based on MBTI and depth.
+* Saturation/Brightness are modified by alignment (e.g., Evil darkens, Good brightens).
 
-To preserve generative consistency, all randomness is locked to a user-defined seed. Layers can be toggled, outlined, or labeled with MBTI and trait scores.
+Randomness is locked to a user-defined seed for consistent results. Users can toggle layers, traits, and highlights in the UI.
 
 ### Technical Highlights
 
@@ -106,18 +106,30 @@ To preserve generative consistency, all randomness is locked to a user-defined s
 
 ### Tools & Implementation
 
-* Frameworks: p5.js, d3.voronoi
-* Features: Object-oriented class system for each Voronoi layer
-* Interactivity: UI toggles to show/hide traits, layers, and highlight modes
-* Seed Control: Deterministic seeding for repeatable outputs
+I used ChatGPT as a coding assistant to:
+* Debug logic issues and restructure messy code.
+* Translate abstract systems (e.g., alignment inheritance) into functional code.
+* Refactor components into reusable class-based architecture.
+
+Technical Features:
+* Deterministic seed-based generation
+* Trait-based color blending and structure.
+* Chaotic alignment introduces irregular positioning.
+* UI toggles for interactive exploration.
+
+Libraries Used:
+p5.js · p5.sound · d3.v5
 
 ## Result and Future Work
-This system generates portraits that uniquely encode the "identity" of a user through color, structure, and progression. Good and Evil traits shape light and dark tones, while MBTI and chaos/lawful logic determine spatial design. Layers evolve visually and symbolically.
+This system generates abstract portraits that uniquely visualize a user's identity through color progression, shape variation, and trait inheritance. Moral alignment influences saturation and brightness—Good brightens cells, Evil darkens them—while MBTI letters introduce hue shifts and structural variation in seed placement. Chaotic alignments introduce spatial irregularity, contrasting with lawful symmetry. The result is a layered, symbolic portrait that evolves from user input into a generative form.
+
+Each layer—base, sublayer 2, and sublayer 3—adds depth both visually and conceptually. Traits are inherited probabilistically across layers, creating continuity or divergence based on moral logic. This layering not only reveals personality structure but also invites interpretation through color, structure, and transformation over depth.
+
 
 ### Future Work
-* Implement simulation with rules truer to "Game of Life" rules.
-* Enable live animation of sublayer growth & decay.
-* Improve shape generation quality via Bézier-based cell curvature.
+* Integrate simulation rules inspired by Conway’s Game of Life to allow cell growth/decay.
+* Animate trait inheritance and diagram evolution as a time-based transformation.
+* Replace current geometric shapes with smoother, curved cells using Bézier-based styling.
 * Unintended Failure – Fixing one issue causes another absurd problem.
 
 
