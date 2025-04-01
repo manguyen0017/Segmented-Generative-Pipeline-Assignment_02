@@ -60,12 +60,6 @@ Previous systems by Holtzman (2016) explored aesthetic computation via user-cont
 
 The generator was implemented in p5.js with d3.voronoi to create layered Voronoi diagrams. Users input their favorite color (HSV), MBTI code, and moral alignment (e.g., Chaotic Good). These values drive the construction of three nested diagram layers, each shaped by identity traits.
 
-### Layer Structure & Pipeline
-
-* Base Layer: 4 Voronoi cells based on MBTI letters. Each letter influences cell position and shifts hue (e.g., I/E = ±20°).
-* Sublayer 2: Each base cell spawns 3 smaller cells. Traits (e.g., Good = +1, Evil = -1) mutate per cell with probabilistic inheritance.
-* Sublayer 3: Each sublayer 2 cell creates 2 more cells. Traits inherit again with a 70% chance to persist, 20% to neutralize, and 10% to flip.
-
 [![Voronoi][images-fig2]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig2.png)
 
 Figure 2. A visual overview of how HSV color, MBTI code, and moral alignment collectively influence color, pattern structure, and visual behavior of the generative system.
@@ -73,6 +67,12 @@ Figure 2. A visual overview of how HSV color, MBTI code, and moral alignment col
 [![Voronoi][images-fig3]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig3.png)
 
 Figure 3. Pipeline stages from selected HSV input to final nested Voronoi output, showing how personality and color traits evolve across layers.
+
+### Layer Structure & Pipeline
+
+* Base Layer: 4 Voronoi cells based on MBTI letters. Each letter influences cell position and shifts hue (e.g., I/E = ±20°).
+* Sublayer 2: Each base cell spawns 3 smaller cells. Traits (e.g., Good = +1, Evil = -1) mutate per cell with probabilistic inheritance.
+* Sublayer 3: Each sublayer 2 cell creates 2 more cells. Traits inherit again with a 70% chance to persist, 20% to neutralize, and 10% to flip.
 
 [![Voronoi][images-fig4]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig4.png)
 
@@ -86,9 +86,6 @@ Figure 5. Lawful, Neutral, and Chaotic alignment styles shown across all layers.
 
 Figure 6. Good, Neutral, and Evil alignment influences on color vibrancy. Good brightens, Evil darkens, and Neutral balances saturation.
 
-[![Voronoi][images-fig7]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig7.png)
-
-Figure 7. Trait inheritance table showing the probability of child cells adopting Good, Neutral, or Evil values from parents. Visualized numerically in layer output (+1, 0, -1, etc).
 
 ### Color Logic
 
@@ -97,6 +94,10 @@ Color is represented in HSB mode:
 * Saturation/Brightness are modified by alignment (e.g., Evil darkens, Good brightens).
 
 Randomness is locked to a user-defined seed for consistent results. Users can toggle layers, traits, and highlights in the UI.
+
+[![Voronoi][images-fig7]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig7.png)
+
+Figure 7. Trait inheritance math showing the probability of child cells adopting Good, Neutral, or Evil values from parents. Visualized numerically in layer output (+1, 0, -1, etc).
 
 ### Technical Highlights
 
@@ -119,6 +120,10 @@ Technical Features:
 
 Libraries Used:
 p5.js · p5.sound · d3.v5
+
+[![Voronoi][images-fig8]](https://github.com/manguyen0017/Segmented-Generative-Pipeline-Assignment_02/blob/main/images/fig8.png)
+
+Figure 8. Randomized exploration examples.
 
 ## Result and Future Work
 This system generates abstract portraits that uniquely visualize a user's identity through color progression, shape variation, and trait inheritance. Moral alignment influences saturation and brightness—Good brightens cells, Evil darkens them—while MBTI letters introduce hue shifts and structural variation in seed placement. Chaotic alignments introduce spatial irregularity, contrasting with lawful symmetry. The result is a layered, symbolic portrait that evolves from user input into a generative form.
